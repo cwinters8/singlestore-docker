@@ -1,0 +1,21 @@
+services:
+  master:
+    image: singlestoretraining/ubuntu_master:latest
+    ports:
+      - 3306:3306
+      - 22:22
+      - 8080:8080
+      - 8081:8081
+    container_name: master
+  child:
+    image: singlestoretraining/ubuntu_child:latest
+    container_name: child
+  leaf1:
+    image: singlestoretraining/ubuntu_leaf1:latest
+    container_name: leaf1
+  leaf2:
+    image: singlestoretraining/ubuntu_leaf2:latest
+    container_name: leaf2
+networks:
+  default:
+    name: edu
