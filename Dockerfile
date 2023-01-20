@@ -11,8 +11,7 @@ RUN apt-get update && \
   echo "deb [arch=amd64] https://release.memsql.com/production/debian memsql main" | tee /etc/apt/sources.list.d/memsql.list && \
   apt update && apt -y install singlestore-client singlestoredb-toolbox singlestoredb-studio
 
-# enable running studio as an init service
-COPY ./singlestoredb-studio /etc/init.d/
-RUN update-rc.d singlestoredb-studio defaults && service singlestoredb-studio start
+# enable supervisor services, including singlestoredb-studio
+COPY ./supervisord.conf /etc/supervisor/
 
 CMD [ "/usr/bin/supervisord" ]

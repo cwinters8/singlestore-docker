@@ -29,3 +29,11 @@ vim .env # or whatever editor you want to use
 ```sh
 docker compose build && docker compose up
 ```
+
+## shutting down
+
+when you want to terminate the cluster, or need a clean state to start from, run:
+
+```sh
+docker compose down
+```
