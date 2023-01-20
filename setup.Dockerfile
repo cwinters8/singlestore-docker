@@ -3,11 +3,6 @@ FROM singlestoretraining/ubuntu_master:latest
 ARG LICENSE
 ARG PASSWORD
 
-# ENV MASTER_HOST=ubuntu@${MASTER_HOST}
-# ENV CHILD_HOST=ubuntu@${CHILD_HOST}
-# ENV LEAF1_HOST=ubuntu@${LEAF1_HOST}
-# ENV LEAF2_HOST=ubuntu@${LEAF2_HOST}
-
 # pem key
 COPY ./singlestorekey.pem /home/ubuntu/.ssh/
 RUN chown ubuntu:ubuntu /home/ubuntu/.ssh/singlestorekey.pem
@@ -22,4 +17,4 @@ RUN apt-get update && \
 # deploy SingleStoreDB
 ENTRYPOINT sdb-deploy setup-cluster -i /home/ubuntu/.ssh/singlestorekey.pem --license ${LICENSE} \
   --master-host ubuntu@${MASTER_HOST} --aggregator-hosts ubuntu@${CHILD_HOST} \
-  --leaf-hosts ubuntu@${LEAF1_HOST},ubuntu@${LEAF2_HOST} --password ${PASSWORD} --version 8.0
+  --leaf-hosts ubuntu@${LEAF1_HOST},ubuntu@${LEAF2_HOST} --password ${PASSWORD} --version 8.0 -v -y
