@@ -1,5 +1,6 @@
 services:
   master:
+    platform: linux/amd64
     build:
       context: .
     ports:
@@ -13,15 +14,25 @@ services:
       - leaf1
       - leaf2
   child:
-    image: singlestoretraining/ubuntu_child:latest
+    platform: linux/amd64
+    build:
+      context: .
+      dockerfile: node.Dockerfile
     container_name: child
   leaf1:
-    image: singlestoretraining/ubuntu_leaf1:latest
+    platform: linux/amd64
+    build:
+      context: .
+      dockerfile: node.Dockerfile
     container_name: leaf1
   leaf2:
-    image: singlestoretraining/ubuntu_leaf2:latest
+    platform: linux/amd64
+    build:
+      context: .
+      dockerfile: node.Dockerfile
     container_name: leaf2
   setup:
+    platform: linux/amd64
     env_file: .env
     build:
       context: .

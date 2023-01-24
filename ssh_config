@@ -1,0 +1,4 @@
+Port 22
+PubkeyAuthentication yes
+PasswordAuthentication no
+ChallengeResponseAuthentication no
